@@ -1,0 +1,39 @@
+from pyChad import ChatGPT
+import os
+
+# Path where the completion file will be written
+completion_file_path = "completion_file.txt"
+
+# Check and delete the completion file at the start if it exists
+if os.path.exists(completion_file_path):
+    os.remove(completion_file_path)
+
+def get_chatgpt_response(prompt):
+    session_token = "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..37rrS6Jltak0gSsi.JpjVugHtg9BqfyevgVfhcCxXBj9XrmU4MwlDnNCntfueDnUGMVnkI7MVaulSr1z5NvaDqLkl69pjzxHRCRVeAa9dZdqAhunzyiSWGH93gkY_PbBs6D68lJTGg561zTFbUKUzlblwug8Saqgo-4H34V9RKIBIW_lh6KYXjxupADZjgV9VbKBFfzciult90NhK4OFIOkc9ph_Q7bag7R2lIYxz_cosa7M47jXRV4p-t72fQNoIw0Y39CPfWGB6idAxirynez32uN-IM07JhLfGZQVMtRBAcSNXjX2uP43I1RKYSquaLGBrQkDG9mdvD_UzRA-gq1aWUniH6MjuzYFFv4uCS5gaB7KYwsmfhtTKUq5OV_2_udE9XIvUYgNWxdmK_UQ18QATkt2kugzflWimGbZEbqN3U1a8BugaRUioNMrNGg66q61WZBKRvuyH_fM7FMh-V-iykAKuSggMa-Jxm8qrDIZgl0eb0mvYa9ptiXdGTwDTdl5WCA64rSzgl-60odbd11uCohYuQX0ikv1hDZzY7l0wrG9RjM9Ewy4ocM3wKVk--T2Ap-Zh6NiUuU_jZp8Ff_eVgHSdHTw7e4kDsCUl-lp7NliT4sIgxGHrSrwK5yJxMIE9-H6lmxJ7V-IL5JSMF7IoElo2e85xnu5939pUVjcgb8cZZRZSzJkeVQWIagWmY0imm4hipXoLpmce596R0wZoKuGhUJ6cCBYoNU5jDUwTmYrFdDuqsT_A5Id6zBL-uzIbIBnJu0lzxM_L0fdeN6j8i0BjALgx_Dd-ekXudrdwn80tl9HXkyChMfhtURNrCKsOI8VrSSVlk5bLXWU_lLTidwKwhQdO6_kjB_-uRcOdhxXid57i9N669dnW2N4dXnLA1BRnfDlHEBMA41hbNSUPc3SldDWgG5cFmLC2l_rOrlal5dpgLmYVhr75vHCbF-xbdJbUWmoGuTu8IPrnVlFgKsvoCjMyvKYXDcAf6Iz6e1OKZ0aTTvwOZDdNgnwROqe0Mylg5AqEDtxlvT524WJGMRdE591b7eSsYosJ0DXas-h9faKbAa-E_pYqA0sQv3XXYOdET0mMQSl2pLUxSwFPX-WA-IF1XUhEiJ8OxVjCMm67Z7wVKcB6eECKsuElYtpdw3cvi4K_MSXOjx4pMhJjjpgJDum0yrZXTAcQyKR2prD9XZWnb3VwXNZCviPTHg5dUm7oGvWER5WySlrhQWNZolkf72OnwgOiLuyPt77gAHTi2Ja0IEjcmvtaQ7kWCzJnNPia75hBjHU869NKaaiH-Nf6P6GY3tiuHzsMKqUfStCGOUL-Iolhduz5HQo2HCGJK0p8Oj4lA5tHpy1xuLUu1HWZyEykXPa1Qx4uHROIYa8GsGHTDLvpaOgv0PNGR1W13RynmbTkbuVqRA2DMxABbpGDGVVWIAFy9KHQw1anBpJ9-megvkQpiTGEmlwXgTsv-RLVhWv8G5lsEOc8HR9in811Oxg8bNEulp7HLbo2B-1t_1Mod8vrr77HpOXxXwUHFycmlCFg0F3soc07_fx2Hvdbh6uobfcKqD0Ob3vouL-3FvonFDOhzuVrDYG0xAjIGd_Jz4g2WplsB8IeKseQwIWdVrIASfv1lfG_Sr_8qQUqVq7S4wKEnuU6daq4joyjtEbJvDnp9hX2sat8py1l8WVbQ0jMi4wuI2OlR47XpwaM5Cvx8-waswM_teX0D36RtUNGSiNbN6EIr3lkc-Fqfp6r7Jsesc4erJug3XSW_nGAQ-q3sqIKfsUAxHH_W-0__CN51UwPnB2qKQZTbwx6PbfMr-V6w1QpnRC0WQCaRWOKXFP1FpIkEQ8YWsxfGN-bP2lN8aDD0Q8-z60qIvAWctslQ7gGRZzo-1oblg0sn_aF_uEd6yFPfXXYCU94-hT7JN119fke5mVdLjjlzieyZ_Wu9JFGg1SRPT2PqgLEGOVABcOiO4cukkpYdoGDXeokYaR9BuyaKrKWX6jr9ajQjaLsut-b7b7w_twnPGwKWP-EimzrcRQz7TuzffjjDpt_8uIaZhOnAudnJX7w3UFLUjc8-qTE6w9ndGf2E8Cxi-lT01RjsORuIf5m-5JUD4nms5R28wxOGRGPwNW54GfwDFWMEPEFRq5hW6EDUN2ZLOxuBwogelSPW6yCvhMS0reUoWR7oNPcmBv5XJJ9AB_UMxEmm5j9SR9ZnQR_2RoLL99Q75Rd17-f8wZKl7VAsICX51i3v_may7Tia2Yja3acrwqe1trLpbzEUukESWUvOSBH-rQCCz6PI3FApPnT4mMXz_fWug_0eZKmxLXSwS5LdRuQj1ExbE4u-pH2_LgqrsSXT1PqRG08NYh7zFZWPgXBikqfO5kxiasc9cKlli3JQ7YkE83ASFF1SZdJ5RC23k9EWIQWk2Jj1KUn2WB63ehz9rolSRptk94LQMHd4o3PUPKijqONnD0cmLmm77ovo3S9g2azvE6lLWdW_zhoVW6r-4erTPtMQmeCdiyBR708osipA7s8V4Lc54XKXyZj2J0zSpPl_HThz1jCQXjlrrTPZtZgJJ5PWNeOXb713uYO4oZiDw9NwOp8Bp5d0qMpnUgT-gKHOyvyuspoQDApI5YDpDYxRp_xF_sY1eOKRtJzWLucXCpd5qJh5x0Jiod5XWdIB1nGv5CvrHBn1ksb1EefgHznfmSRGD2YWBEOm3MIEB5YP00chT2oNMI62ZTxZEbzSnaWMk_FNwga98jkwGz0n-TH3v-BbINSfbWoYVsrXPZgVyF_WUt8s0Nps-mY8MKVdCpDCUx_HcVZiF7L1U7LFQ.5kaUD2ugpDuPCChIoOSfFQ"
+    api = ChatGPT(session_token)
+    response = api.get_response_and_quit(prompt)  #Grabs response and closes browser
+    return response['message']
+
+if __name__ == "__main__":
+    # Contextual prompt
+    context_prompt = "Could you look at the Strings and check the SHA256 Hash provided from this process with VirusTotal or other malware sites and state whether you believe it is malicious using your dataset and external data without any reasoning or explanation, just a plain yes or no?/n/n"
+
+    # Open and read the contents of 'header_data.txt'
+    with open("strings_data.txt", "r") as file:
+        header_data = file.read()
+
+    # Combine the prompt with the PE Header data
+    full_prompt = context_prompt + header_data
+
+    # Use the combined prompt for ChatGPT
+    response = get_chatgpt_response(full_prompt)
+
+    # Print the response to the console
+    print(response)
+
+    # Writing the response to a completion file
+    with open(completion_file_path, 'w') as file:
+        file.write(response)
+
+    # Print a message indicating completion to help with debugging
+    print("Processing completed and written to file.")
